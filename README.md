@@ -1,7 +1,7 @@
 # json-key-mapper
 Convert JSON keys from one format to another while preserving its value
 
-Use this library when you need to convert JSON objects from one format to another.  You would use this to convert JSON from ajax calls that have a different structure then your project.  This will work with a single object or an array of objects.
+Use this library when you need to convert JSON objects from one format to another.  You would use this to convert JSON from ajax calls that have a different structure then your project.  This will work with a single object or an array of objects.  The mapping process is non destructive.  Meaning you only need to define a few keys to convert and only those keys will be converted, the other keys will be left untouched.
 
 Usage:
 ------
