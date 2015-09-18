@@ -129,7 +129,7 @@
      */
 
     return {
-            __private: {config,
+            __private: {config: config,
                         getMap: getMap,
                         mapItem: mapItem,
                         mapArray: mapArray},
