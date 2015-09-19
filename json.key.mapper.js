@@ -116,7 +116,7 @@
 
     var mapItem = function(item, map){
         for(var prop in map){
-            if(map.hasOwnProperty(prop)){
+            if(map.hasOwnProperty(prop) && item[prop]){
                 item[map[prop]] = item[prop];
                 delete item[prop];
             }

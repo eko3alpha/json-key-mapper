@@ -39,6 +39,13 @@ var runTests = function(title, jkm){
         //------------------------------------------------------------------------------------
 
         jkm.setMap('test', {a: 'b'});
+        testData = {c: 100};
+        testCase = {c: 100};
+        assert.propEqual(jkm.map('test', testData), testCase, 'map() item with no matching map keys');
+
+        //------------------------------------------------------------------------------------
+
+        jkm.setMap('test', {a: 'b'});
         testData = {a: 100};
         testCase = {b: 100};
         assert.propEqual(jkm.map('test', testData), testCase, 'map() item');
