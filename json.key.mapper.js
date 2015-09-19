@@ -58,7 +58,7 @@
 
         if(typeof mapInfo === 'string'){
             map = getMap(mapInfo);
-        } else {
+        } else{
             map = mapInfo;
         }
 
@@ -124,13 +124,8 @@
         for(var prop in mapData){
             if(mapData.hasOwnProperty(prop) && item[prop]){
 
-
-                console.log('prop:', prop);
-                console.log('map[prop]:', mapData[prop]);
-                console.log('item[prop]:', item[prop]);
-
                 if(typeof mapData[prop] === 'object'){
-                   item[prop] = map(mapData[prop], item[prop]);
+                    item[prop] = map(mapData[prop], item[prop]);
                 }else{
                     item[mapData[prop]] = item[prop];
                     delete item[prop];
