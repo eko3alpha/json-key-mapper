@@ -20,11 +20,11 @@
     /**
      * Stores a mapping profile with a given id
      * @param {string} name   mapping profile name
-     * @param {object} newMap json object defining your mapping
+     * @param {object} mapData json object defining your mapping
      */
 
-    var setMap = function(name, newMap){
-        config.map[name] = newMap;
+    var setMap = function(name, mapData){
+        config.map[name] = mapData;
     };
 
     /**
@@ -47,14 +47,20 @@
      * @return {object|array}         mapped data
      */
 
-    var map = function(mapName, data){
+    var map = function(mapInfo, data){
+
+        var map;
 
         // if no data is passed in then exit, nothing to map
         if(data === undefined){
             return;
         }
 
-        var map = getMap(mapName);
+        if(typeof mapInfo === 'string'){
+            map = getMap(mapInfo);
+        } else {
+            map = mapInfo;
+        }
 
         // if map is an empty object then
         // return value as is
@@ -110,15 +116,25 @@
      * Maps json based on mapping provided keeping
      * unmapped properties untouched
      * @param  {array} item  json object
-     * @param  {object} map  mapping profile
+     * @param  {object} mapData  mapping profile
      * @return {object}       mapped json object
      */
 
-    var mapItem = function(item, map){
-        for(var prop in map){
-            if(map.hasOwnProperty(prop) && item[prop]){
-                item[map[prop]] = item[prop];
-                delete item[prop];
+    var mapItem = function(item, mapData){
+        for(var prop in mapData){
+            if(mapData.hasOwnProperty(prop) && item[prop]){
+
+
+                console.log('prop:', prop);
+                console.log('map[prop]:', mapData[prop]);
+                console.log('item[prop]:', item[prop]);
+
+                if(typeof mapData[prop] === 'object'){
+                   item[prop] = map(mapData[prop], item[prop]);
+                }else{
+                    item[mapData[prop]] = item[prop];
+                    delete item[prop];
+                }
             }
         }
         return item;
