@@ -88,6 +88,20 @@ var runTests = function(title, jkm){
 
         //------------------------------------------------------------------------------------
 
+        jkm.setMap('oneItem', {a: 'z'});
+        testData = {a: '', b: false};
+        testCase = {z: '', b: false};
+        assert.propEqual(jkm.map('oneItem', testData), testCase, 'map() property with falsy values');
+
+        //------------------------------------------------------------------------------------
+
+        jkm.setMap('manyFalsy', {a: 'z', b: 'y', d:'x'});
+        testData = {a: false, b: null, c: NaN, d: 0, e: ''};
+        testCase = {z: false, y: null, c: NaN, x: 0, e: ''};
+        assert.propEqual(jkm.map('manyFalsy', testData), testCase, 'map() property with many falsy values');
+
+        //------------------------------------------------------------------------------------
+
         jkm.setMap('conflictedMapping', {a: 'z'});
         testData = {a: 100, b: 200, z: 300};
         testCase = {z: 100, b: 200};

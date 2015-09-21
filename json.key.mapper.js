@@ -122,7 +122,7 @@
 
     var mapItem = function(item, mapData){
         for(var prop in mapData){
-            if(mapData.hasOwnProperty(prop) && item[prop]){
+            if(mapData.hasOwnProperty(prop) && item[prop] !== undefined){
 
                 if(typeof mapData[prop] === 'object'){
                     item[prop] = map(mapData[prop], item[prop]);
